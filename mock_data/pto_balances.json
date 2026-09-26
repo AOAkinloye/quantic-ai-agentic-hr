@@ -1,0 +1,20 @@
+[
+    {
+        "employee_id": "EMP001",
+        "accrued_pto_hours": 120,
+        "used_pto_hours": 40,
+        "sick_leave_hours_remaining": 48
+    },
+    {
+        "employee_id": "EMP002",
+        "accrued_pto_hours": 80,
+        "used_pto_hours": 80,
+        "sick_leave_hours_remaining": 24
+    },
+    {
+        "employee_id": "EMP003",
+        "accrued_pto_hours": 160,
+        "used_pto_hours": 20,
+        "sick_leave_hours_remaining": 56
+    }
+]

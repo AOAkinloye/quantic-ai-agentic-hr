@@ -1,0 +1,16 @@
+[
+    {
+        "employee_id": "EMP001",
+        "health_insurance": "Gold Plan",
+        "dental": true,
+        "vision": true,
+        "401k_match_percent": 4.0
+    },
+    {
+        "employee_id": "EMP002",
+        "health_insurance": "Silver Plan",
+        "dental": true,
+        "vision": false,
+        "401k_match_percent": 3.0
+    }
+]

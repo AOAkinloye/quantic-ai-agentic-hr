@@ -1,0 +1,102 @@
+[
+    {
+        "query": "What is the PTO policy for new hires?",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "120 hours"
+    },
+    {
+        "query": "Can EMP001 work remotely?",
+        "expected_tool": "lookup_employee_profile",
+        "expected_answer_snippet": "Remote"
+    },
+    {
+        "query": "How many sick days do I get?",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "56 hours"
+    },
+    {
+        "query": "I am EMP002, how much PTO do I have?",
+        "expected_tool": "check_pto_balance",
+        "expected_answer_snippet": "80"
+    },
+    {
+        "query": "Who is the manager for EMP003?",
+        "expected_tool": "lookup_employee_profile",
+        "expected_answer_snippet": "EMP007"
+    },
+    {
+        "query": "What health insurance does EMP001 have?",
+        "expected_tool": "lookup_benefits_status",
+        "expected_answer_snippet": "Gold Plan"
+    },
+    {
+        "query": "Submit a PTO request for 3 days for EMP001.",
+        "expected_tool": "create_mock_hr_ticket",
+        "expected_answer_snippet": "Success"
+    },
+    {
+        "query": "Are flights reimbursed?",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "economy class"
+    },
+    {
+        "query": "Do you pay for home internet?",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "not reimbursed"
+    },
+    {
+        "query": "What is the wellness stipend?",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "$50"
+    },
+    {
+        "query": "Does PTO roll over?",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "40 hours"
+    },
+    {
+        "query": "What is the 401k match?",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "100% of employee 401k contributions up to 4%"
+    },
+    {
+        "query": "Can I upgrade my flight?",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "personal expense"
+    },
+    {
+        "query": "What's the per diem for meals?",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "$75"
+    },
+    {
+        "query": "Where does EMP002 work?",
+        "expected_tool": "lookup_employee_profile",
+        "expected_answer_snippet": "New York"
+    },
+    {
+        "query": "Does EMP002 have vision insurance?",
+        "expected_tool": "lookup_benefits_status",
+        "expected_answer_snippet": "false"
+    },
+    {
+        "query": "How many unused PTO hours does EMP003 have?",
+        "expected_tool": "check_pto_balance",
+        "expected_answer_snippet": "140"
+    },
+    {
+        "query": "I am EMP001. I want to buy a $1000 chair.",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "$500 stipend"
+    },
+    {
+        "query": "Is there a conflict of interest policy?",
+        "expected_tool": "search_policy_documents",
+        "expected_answer_snippet": "disclosed to HR immediately"
+    },
+    {
+        "query": "Create an expense ticket for EMP002 for a flight.",
+        "expected_tool": "create_mock_hr_ticket",
+        "expected_answer_snippet": "Success"
+    }
+]

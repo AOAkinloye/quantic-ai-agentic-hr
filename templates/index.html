@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Agentic Assistant</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        #chatbox { height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+        .message { margin-bottom: 15px; }
+        .user { color: blue; }
+        .agent { color: green; }
+        .trace { font-size: 0.8em; color: gray; background: #f9f9f9; padding: 5px; border-left: 3px solid #ccc; margin-top: 5px;}
+        input[type="text"] { width: 80%; padding: 10px; }
+        button { padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>HR Agentic Assistant</h1>
+    <div id="chatbox"></div>
+    <div>
+        <input type="text" id="userInput" placeholder="Ask a question (e.g., 'What is the PTO policy for EMP001?')">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        const userInput = document.getElementById('userInput');
+        let history = [];
+
+        async function sendMessage() {
+            const message = userInput.value;
+            if (!message) return;
+
+            appendMessage('User', message, 'user');
+            userInput.value = '';
+
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: message, history: history })
+            });
+
+            const data = await response.json();
+            
+            if (!response.ok) {
+                appendMessage('Error', data.detail || 'An unknown error occurred.', 'agent');
+                return;
+            }
+            
+            // Add user message and assistant message to history (simplified)
+            history.push({ "role": "user", "content": message });
+            history.push({ "role": "assistant", "content": data.response });
+
+            appendMessage('Agent', data.response, 'agent', data.trace);
+        }
+
+        function appendMessage(sender, text, className, trace = null) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${className}`;
+            
+            // formatting basic markdown newlines
+            const formattedText = text.replace(/\n/g, '<br>');
+            msgDiv.innerHTML = `<strong>${sender}:</strong> <br>${formattedText}`;
+            
+            if (trace && trace.length > 0) {
+                const traceDiv = document.createElement('div');
+                traceDiv.className = 'trace';
+                traceDiv.innerHTML = '<strong>Execution Trace:</strong><br>';
+                trace.forEach(t => {
+                    traceDiv.innerHTML += `Called <code>${t.tool}</code> with args <code>${JSON.stringify(t.args)}</code><br>`;
+                    // Truncate result for display if it's too long
+                    let resStr = t.result;
+                    if (resStr.length > 150) resStr = resStr.substring(0, 150) + '...';
+                    traceDiv.innerHTML += `Result: <i>${resStr}</i><br><br>`;
+                });
+                msgDiv.appendChild(traceDiv);
+            }
+            
+            chatbox.appendChild(msgDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+    </script>
+</body>
+</html>

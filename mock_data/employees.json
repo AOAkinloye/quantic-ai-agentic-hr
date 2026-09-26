@@ -1,0 +1,29 @@
+[
+    {
+        "employee_id": "EMP001",
+        "name": "Alice Smith",
+        "department": "Engineering",
+        "role": "Software Engineer",
+        "manager_id": "EMP005",
+        "hire_date": "2021-03-15",
+        "location": "Remote - US"
+    },
+    {
+        "employee_id": "EMP002",
+        "name": "Bob Jones",
+        "department": "Sales",
+        "role": "Account Executive",
+        "manager_id": "EMP006",
+        "hire_date": "2022-06-01",
+        "location": "New York Office"
+    },
+    {
+        "employee_id": "EMP003",
+        "name": "Charlie Davis",
+        "department": "HR",
+        "role": "HR Generalist",
+        "manager_id": "EMP007",
+        "hire_date": "2020-11-10",
+        "location": "San Francisco Office"
+    }
+]
