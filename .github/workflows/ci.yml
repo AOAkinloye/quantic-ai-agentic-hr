@@ -25,4 +25,4 @@ jobs:
 
     - name: Run unit/smoke tests
       run: |
-        pytest tests/
+        python -m pytest tests/
